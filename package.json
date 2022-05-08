@@ -1,0 +1,25 @@
+{
+  "name": "covid-mask-bot",
+  "version": "1.0.0",
+  "description": "Have you ever been in a full lecture hall and thought... should I be wearing a mask? Here's a twitter bot that answers that question for you everyday at 6 am!",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaeagal/covid-mask-bot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aaeagal/covid-mask-bot/issues"
+  },
+  "homepage": "https://github.com/aaeagal/covid-mask-bot#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.0",
+    "twitter-api-client": "^1.5.2"
+  }
+}
