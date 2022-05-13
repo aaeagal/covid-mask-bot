@@ -16,22 +16,28 @@ axios.get('https://api.covidactnow.org/v2/cbsa/39580.json?apiKey=b962634490e543e
     let tweet
         // the CDC recommends that if 200 or more people out of 100,000 people in your area are infected, it's probably a good call to wear a maske
         // there's about 1,500,000 people in 27606, so I figured that if 2500 people are infected, it's probably a good call to wear a mask.
-        if (response.data.actuals.newCases < 2500) {
-            tweet = `📊 ${response.data.actuals.newCases } new COVID-19 cases in 27606. You don't need to wear a mask!`
-        } else {
-            tweet = `📊 ${response.data.actuals.newCases} new COVID-19 cases in 27606. Wear a mask! Tell a friend :)`    
+        // based on: https://www.cdc.gov/coronavirus/2019-ncov/science/community-levels.html
+        
+        if (response.data.actuals.newCases >= 139079) {
+            tweet = `📊 ${response.data.actuals.newCases } new COVID-19 cases in 27606. There's high community risk! For the love of god, wear a mask! TELL EVERYONE TO WEAR A MASK!`
+        } else if (response.data.actuals.newCases > 2500) {
+            tweet = `📊 ${response.data.actuals.newCases} new COVID-19 cases in 27606. There's medium community risk! Wear a mask on campus if you're in a large lecture hall! Tell a friend :)`    
+        }
+        else {
+            tweet = `📊 ${response.data.actuals.newCases} new COVID-19 cases in 27606. The community risk is low! No Mask needed! Yay! :)`
         }
     
-
+    //console.log(response)
     console.log(tweet)
-    
+ 
+/*
     twitterClient.tweets.statusesUpdate({
         status: tweet
     }).then (response => {
         console.log("Tweeted!", response)
     }).catch(err => {
         console.error(err)
-    }) 
+    }) */
 }).catch (err => {
     console.error(err)
 })
